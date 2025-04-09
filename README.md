@@ -2,74 +2,77 @@
 
 ## Project Overview
 ## Project Structure 
-// SIDHE Design System - Project Structure
+# SIDHE Design System - Project Structure
+
+```
 sidhe-design-system/
-├── README.md                           // Project documentation
-├── package.json                        // Project configuration and scripts
-├── config.js                           // Style Dictionary configuration
+├── README.md
+├── package.json
+├── config.js
 │
-├── tokens/                             // Source tokens (Style Dictionary format)
-│   ├── colors.json                     // Color tokens
-│   ├── typography.json                 // Typography tokens
-│   ├── spacing.json                    // Spacing and layout tokens
-│   ├── radius.json                     // Border radius tokens 
-│   ├── effects.json                    // Shadow and effect tokens
-│   └── stroke.json                     // Border and stroke tokens
+├── tokens/
+│   ├── colors.json
+│   ├── typography.json
+│   ├── spacing.json
+│   ├── radius.json
+│   ├── effects.json
+│   └── stroke.json
 │
-├── platforms/                          // Platform-specific implementations
-│   ├── web/                            // Web implementation
-│   │   ├── css/                        // CSS output
-│   │   │   └── sidhe-tokens.css        // Generated CSS variables
-│   │   └── scss/                       // SCSS output
-│   │       └── _sidhe-tokens.scss      // Generated SCSS variables
+├── platforms/
+│   ├── web/
+│   │   ├── css/
+│   │   │   └── sidhe-tokens.css
+│   │   └── scss/
+│   │       └── _sidhe-tokens.scss
 │   │
-│   ├── android/                        // Android implementation
-│   │   └── res/                        // Android resources
-│   │       └── values/                 // XML values
-│   │           ├── sidhe_colors.xml    // Color resources
-│   │           ├── sidhe_dimens.xml    // Dimension resources
-│   │           ├── sidhe_typography.xml // Typography styles
-│   │           └── sidhe_styles.xml    // Component styles
+│   ├── android/
+│   │   └── res/
+│   │       └── values/
+│   │           ├── sidhe_colors.xml
+│   │           ├── sidhe_dimens.xml
+│   │           ├── sidhe_typography.xml
+│   │           └── sidhe_styles.xml
 │   │
-│   └── ios/                            // iOS implementation
-│       └── SIDHEDesignSystem/          // Swift package
-│           ├── Sources/                // Source files
-│           │   ├── SIDHEColors.swift   // Color definitions
-│           │   ├── SIDHETypography.swift // Typography definitions
-│           │   ├── SIDHESpacing.swift  // Spacing definitions
-│           │   └── SIDHEComponents.swift // Component extensions
-│           └── Package.swift           // Swift package definition
+│   └── ios/
+│       └── SIDHEDesignSystem/
+│           ├── Sources/
+│           │   ├── SIDHEColors.swift
+│           │   ├── SIDHETypography.swift
+│           │   ├── SIDHESpacing.swift
+│           │   └── SIDHEComponents.swift
+│           └── Package.swift
 │
-├── examples/                           // Usage examples
-│   ├── web/                            // Web examples
-│   │   ├── index.html                  // Example HTML page
-│   │   └── components.html             // Component examples
+├── examples/
+│   ├── web/
+│   │   ├── index.html
+│   │   └── components.html
 │   │
-│   ├── android/                        // Android examples
-│   │   └── app/                        // Example Android app
+│   ├── android/
+│   │   └── app/
 │   │       └── src/main/
-│   │           ├── java/               // Kotlin code
-│   │           └── res/layout/         // Layout files
-│   │               └── activity_main.xml // Main activity layout
+│   │           ├── java/
+│   │           └── res/layout/
+│   │               └── activity_main.xml
 │   │
-│   └── ios/                            // iOS examples
-│       └── SIDHEExample/               // Example iOS app
-│           └── ContentView.swift       // SwiftUI example view
+│   └── ios/
+│       └── SIDHEExample/
+│           └── ContentView.swift
 │
-├── .github/                            // GitHub configuration
-│   └── workflows/                      // GitHub Actions
-│       └── build-tokens.yml            // Build and deployment workflow
+├── .github/
+│   └── workflows/
+│       └── build-tokens.yml
 │
-└── dist/                               // Generated output (not in repo)
-    ├── web/                            // Web distribution files
-    │   ├── css/                        // CSS files
-    │   └── scss/                       // SCSS files
+└── dist/
+    ├── web/
+    │   ├── css/
+    │   └── scss/
     │
-    ├── android/                        // Android distribution files
-    │   └── res/                        // Android resources
+    ├── android/
+    │   └── res/
     │
-    └── ios/                            // iOS distribution files
-        └── SIDHEDesignSystem/          // Swift files
+    └── ios/
+        └── SIDHEDesignSystem/
+```
 
 ## Token Structure 
 {

@@ -189,7 +189,6 @@ sidhe-design-system/
     "8": { "value": "32px", "type": "spacing" },
    }
   }
-}
 ```
 
 

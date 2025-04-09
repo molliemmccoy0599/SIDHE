@@ -75,116 +75,125 @@ sidhe-design-system/
 ```
 
 ## Token Structure 
+## SIDHE Design Tokens Structure
+
+### colors.json
+```json
 {
-  "colors": {
+  "color": {
     "primary": {
-      "100": "#F686C2", 
-      "200": "#F45BB6",
-      "300": "#F233AB",
-      "400": "#EF0A9F",
-      "500": "#EC0094",
-      "10": "rgba(236, 0, 148, 0.1)"
+      "100": { "value": "#F686C2", "type": "color" },
+      "200": { "value": "#F45BB6", "type": "color" },
+      "300": { "value": "#F233AB", "type": "color" },
+      "400": { "value": "#EF0A9F", "type": "color" },
+      "500": { "value": "#EC0094", "type": "color" },
+      "10": { "value": "rgba(236, 0, 148, 0.1)", "type": "color" }
     },
     "secondary": {
-      "100": "#A888E5",
-      "200": "#8C59DD",
-      "300": "#702BD5",
-      "400": "#5500CC",
-      "500": "#3A0099",
-      "10": "rgba(58, 0, 153, 0.1)"
+      "100": { "value": "#A888E5", "type": "color" },
+      "200": { "value": "#8C59DD", "type": "color" },
+      "300": { "value": "#702BD5", "type": "color" },
+      "400": { "value": "#5500CC", "type": "color" },
+      "500": { "value": "#3A0099", "type": "color" },
+      "10": { "value": "rgba(58, 0, 153, 0.1)", "type": "color" }
     },
     "neutral": {
-      "100": "#F5F5F5",
-      "200": "#E0E0E0",
-      "300": "#BDBDBD",
-      "400": "#9E9E9E",
-      "500": "#757575",
-      "600": "#616161",
-      "700": "#424242",
-      "800": "#303030",
-      "900": "#212121",
-      "1000": "#121212",
-      "10": "rgba(33, 33, 33, 0.1)"
-    }
-  },
-  "typography": {
-    "fontFamilies": {
-      "primary": "Plus Jakarta Sans, sans-serif",
-      "secondary": "Lora, serif"
+      "100": { "value": "#F5F5F5", "type": "color" },
+      "200": { "value": "#E0E0E0", "type": "color" },
+      "300": { "value": "#BDBDBD", "type": "color" },
+      "400": { "value": "#9E9E9E", "type": "color" },
+      "500": { "value": "#757575", "type": "color" },
+      "600": { "value": "#616161", "type": "color" },
+      "700": { "value": "#424242", "type": "color" },
+      "800": { "value": "#303030", "type": "color" },
+      "900": { "value": "#212121", "type": "color" },
+      "1000": { "value": "#121212", "type": "color" },
+      "10": { "value": "rgba(33, 33, 33, 0.1)", "type": "color" }
     },
-    "fontWeights": {
-      "regular": 400,
-      "medium": 500,
-      "semiBold": 600,
-      "bold": 700
+    "red": {
+      "100": { "value": "#FF5A5A", "type": "color" },
+      "200": { "value": "#DD0E10", "type": "color" },
+      "10": { "value": "rgba(221, 14, 16, 0.1)", "type": "color" }
     },
-    "fontSizes": {
-      "xs": "12px",
-      "sm": "14px",
-      "md": "16px",
-      "lg": "18px",
-      "xl": "20px",
-      "2xl": "24px",
-      "3xl": "30px",
-      "4xl": "36px"
-    }
-  },
-  "effects": {
-    "elevation": {
-      "e0": "none",
-      "e1": "0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1)",
-      "e2": "0px 2px 4px rgba(0, 0, 0, 0.05), 0px 3px 6px rgba(0, 0, 0, 0.1)",
-      "e3": "0px 4px 8px rgba(0, 0, 0, 0.05), 0px 6px 12px rgba(0, 0, 0, 0.1)"
+    "yellow": {
+      "100": { "value": "#FFDE59", "type": "color" },
+      "200": { "value": "#C9AB19", "type": "color" },
+      "10": { "value": "rgba(201, 171, 25, 0.1)", "type": "color" }
     },
-    "styles": {
-      "softDiffusion": {
-        "filter": "blur(8px)",
-        "opacity": 0.8
-      },
-      "strongDiffusion": {
-        "filter": "blur(4px)",
-        "opacity": 0.9
-      },
-      "neobrutalism": {
-        "boxShadow": "4px 4px 0px rgba(0, 0, 0, 0.9)",
-        "border": "2px solid #000"
-      }
-    }
-  },
-  "radius": {
-    "base0": "0px",
-    "base2": "2px",
-    "base4": "4px",
-    "base8": "8px",
-    "base12": "12px",
-    "baseRound": "999px"
-  },
-  "spacing": {
-    "0": "0px",
-    "1": "4px",
-    "2": "8px",
-    "3": "12px",
-    "4": "16px",
-    "5": "20px",
-    "6": "24px",
-    "8": "32px",
-    "10": "40px"
-  },
-  "stroke": {
-    "width": {
-      "fine": "1.2px",
-      "medium": "1.5px",
-      "thick": "4px"
-    },
-    "style": {
-      "solid": "solid",
-      "dashed": "dashed",
-      "dotted": "dotted"
+    "green": {
+      "100": { "value": "#56E0B2", "type": "color" },
+      "200": { "value": "#17AF66", "type": "color" },
+      "10": { "value": "rgba(23, 175, 102, 0.1)", "type": "color" }
     }
   }
 }
-## Style Dictionarry Configuration 
+```
 
+### typography.json
+```json
+{
+  "font": {
+    "family": {
+      "primary": { "value": "Plus Jakarta Sans, sans-serif", "type": "fontFamily" },
+      "secondary": { "value": "Lora, serif", "type": "fontFamily" }
+    },
+    "weight": {
+      "regular": { "value": "400", "type": "fontWeight" },
+      "medium": { "value": "500", "type": "fontWeight" },
+      "semiBold": { "value": "600", "type": "fontWeight" },
+      "bold": { "value": "700", "type": "fontWeight" }
+    },
+    "size": {
+      "xs": { "value": "12px", "type": "fontSize" },
+      "sm": { "value": "14px", "type": "fontSize" },
+      "md": { "value": "16px", "type": "fontSize" },
+      "lg": { "value": "18px", "type": "fontSize" },
+      "xl": { "value": "20px", "type": "fontSize" },
+      "2xl": { "value": "24px", "type": "fontSize" },
+      "3xl": { "value": "30px", "type": "fontSize" },
+      "4xl": { "value": "36px", "type": "fontSize" },
+      "5xl": { "value": "48px", "type": "fontSize" },
+      "6xl": { "value": "60px", "type": "fontSize" }
+    },
+    "lineHeight": {
+      "none": { "value": "1", "type": "lineHeight" },
+      "tight": { "value": "1.25", "type": "lineHeight" },
+      "snug": { "value": "1.375", "type": "lineHeight" },
+      "normal": { "value": "1.5", "type": "lineHeight" },
+      "relaxed": { "value": "1.625", "type": "lineHeight" },
+      "loose": { "value": "2", "type": "lineHeight" }
+    },
+    "letterSpacing": {
+      "tighter": { "value": "-0.05em", "type": "letterSpacing" },
+      "tight": { "value": "-0.025em", "type": "letterSpacing" },
+      "normal": { "value": "0", "type": "letterSpacing" },
+      "wide": { "value": "0.025em", "type": "letterSpacing" },
+      "wider": { "value": "0.05em", "type": "letterSpacing" },
+      "widest": { "value": "0.1em", "type": "letterSpacing" }
+    }
+  }
+}
+```
+
+### spacing.json
+```json
+{
+  "spacing": {
+    "0": { "value": "0px", "type": "spacing" },
+    "1": { "value": "4px", "type": "spacing" },
+    "2": { "value": "8px", "type": "spacing" },
+    "3": { "value": "12px", "type": "spacing" },
+    "4": { "value": "16px", "type": "spacing" },
+    "5": { "value": "20px", "type": "spacing" },
+    "6": { "value": "24px", "type": "spacing" },
+    "8": { "value": "32px", "type": "spacing" },
+   }
+  }
+}
+```
+
+
+### Style Dictionary Configuration (config.json)
 /**
  * SIDHE Design System - Style Dictionary Configuration
  *

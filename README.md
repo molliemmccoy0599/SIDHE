@@ -3,7 +3,7 @@
 ## Project Overview
 ## Project Structure 
 
-{"projectName": "sidhe-design-system",
+ProjectName: "sidhe-design-system",
   "structure": {
     "tokens": {
       "colors.json": "Color token definitions",

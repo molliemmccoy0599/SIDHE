@@ -937,17 +937,19 @@ module.exports = {
 
 ## Part 2: Reflection – Tokenizing a Brand's Style Guide
 1. Benefits Realized
-It was/is convient to have all of the colors and other styles in one refined place.
+It was/is convient to have all of the colors and other styles in one refined place. However 
 
 
 
 2. Drawbacks and Challenges
-This was the worst project for me with constant frustration met across the board, the video of how to do the demo was never shared and I found myself floundering as I cannot learn something by just watching or attempting to quickly follow along. As for Drawbacks of even having a token system like this, is that it over complicates absolutely everything leading to little to no flexibility in changes or shifts that need to be made and creates confines that are smothering. The amount of stress and also just sleep that was lost on this project is ridiculous, I found it to be very difficult for very little to absolutely no pay off. 
+This was the worst project for me with constant frustration met across the board, the video of how to do the demo was never shared and I found myself floundering as I cannot learn something by just watching or attempting to quickly follow along. As for Drawbacks of even having a token system like this, is that it over complicates absolutely everything leading to little to no flexibility in changes or shifts that need to be made and creates confines that are smothering. The amount of stress and also just sleep that was lost on this project is ridiculous, I found it to be very difficult for very little to absolutely no pay off.
 
-3. Version Control and Governance
-With control and anybody even making a slight change the code can stop working and it somthing I would be concerned about when functioning as a unite on something such as this, there is jsut so much room for error and 
+I found myself looking at my work then at my peers then to the internet to find some sort of answer only to come back to the same place that it just wouldn't work whether that be a bit of code falling off the end or what to have it read correctly felt/feels nearly impossible. After running out of questions on Claude as well as sources on the internet I turned to me peers for support to help me solve the issue.
 
-4. Automation and Pipeline Considerations
+4. Version Control and Governance
+With control and anybody even making a slight change the code can stop working and it somthing I would be concerned about when functioning as a unite on something such as this, there is just so much cahnce of an error and I worry about something going wrong. In terms of working by myself its easy to go back in delete something then reaprroach it with new code or information, with others its not always the case. For instance as I work alone I rarely do push or pulls as I am the sole person in charge however in a team setting these are necessary to keep code organized and avoid unnecessary errors. 
 
-5. Tokens in the Wild
+5. Automation and Pipeline Considerations
+
+6. Tokens in the Wild
 

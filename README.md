@@ -194,41 +194,135 @@ sidhe-design-system/
 
 
 ### Style Dictionary Configuration (config.json)
-{
-  "typography": {
-    "fonts": {
-      "primary": "Figr Display, serif",
-      "secondary": "Figr Sans, sans-serif"
-    },
-    "sizes": {
-      "display-1": "72px",
-      "display-2": "60px",
-      "display-3": "48px",
-      "headline-1": "36px",
-      "headline-2": "30px",
-      "headline-3": "24px",
-      "body-large": "20px",
-      "body-medium": "16px",
-      "body-small": "14px",
-      "caption": "12px"
-    },
-    "weights": {
-      "regular": 400,
-      "medium": 500,
-      "semibold": 600,
-      "bold": 700
-    }
+/**
+ * SIDHE Design System - Style Dictionary Configuration
+ *
+ * This configuration file defines how to transform the source tokens
+ * into platform-specific formats.
+ */
+
+const StyleDictionary = require('style-dictionary');
+
+// Custom transforms
+StyleDictionary.registerTransform({
+  name: 'size/px',
+  type: 'value',
+  matcher: (token) => {
+    return token.value.toString().endsWith('px');
   },
-  "colors": {
-    "primary": {
-      "100": "#D5B3FF",
-      "200": "#B476FF",
-      "300": "#9C44FF",
-      "400": "#7E12FF",
-      "500": "#5128FB"
+  transformer: (token) => {
+    return token.value.toString().replace('px', '');
+  }
+});
+
+// Custom formats
+StyleDictionary.registerFormat({
+  name: 'json/nested',
+  formatter: function(dictionary) {
+    return JSON.stringify(dictionary.tokens, null, 2);
+  }
+});
+
+// Style Dictionary Configuration
+module.exports = {
+  source: ['tokens/**/*.json'],
+  platforms: {
+    // Web: CSS Variables
+    css: {
+      transformGroup: 'css',
+      buildPath: 'dist/web/',
+      files: [{
+        destination: 'sidhe-tokens.css',
+        format: 'css/variables',
+        options: {
+          selector: ':root',
+          outputReferences: true
+        }
+      }]
     },
-    "secondary": {
-      "100
+    
+    // Web: SCSS Variables
+    scss: {
+      transformGroup: 'scss',
+      buildPath: 'dist/web/',
+      files: [{
+        destination: 'sidhe-tokens.scss',
+        format: 'scss/variables',
+        options: {
+          outputReferences: true
+        }
+      }]
+    },
+    
+    // Android: XML Resources
+    android: {
+      transformGroup: 'android',
+      buildPath: 'dist/android/src/main/res/values/',
+      files: [
+        {
+          destination: 'sidhe_colors.xml',
+          format: 'android/colors',
+          filter: {
+            type: 'color'
+          }
+        },
+        {
+          destination: 'sidhe_dimens.xml',
+          format: 'android/dimens',
+          filter: {
+            type: 'size'
+          }
+        }
+      ]
+    },
+    
+    // iOS: Swift Constants
+    ios: {
+      transformGroup: 'ios',
+      buildPath: 'dist/ios/',
+      files: [
+        {
+          destination: 'SidheColors.swift',
+          format: 'ios/colors.swift',
+          className: 'SidheColors',
+          filter: {
+            type: 'color'
+          }
+        },
+        {
+          destination: 'SidheTypography.swift',
+          format: 'ios/swift/any',
+          className: 'SidheTypography',
+          filter: {
+            type: 'typography'
+          }
+        },
+        {
+          destination: 'SidheSpacing.swift',
+          format: 'ios/swift/any',
+          className: 'SidheSpacing',
+          filter: {
+            type: 'size'
+          }
+        }
+      ]
+    },
+    
+    // JSON for reference
+    json: {
+      transformGroup: 'js',
+      buildPath: 'dist/json/',
+      files: [
+        {
+          destination: 'sidhe-tokens.json',
+          format: 'json/nested'
+        }
+      ]
+    }
+  }
+};
+
+
 
 ## Package.json with Automation Scripts
 

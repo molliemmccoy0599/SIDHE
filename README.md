@@ -477,17 +477,287 @@ jobs:
     steps:
     
 ## Installation and Usage 
-npm install @sidhe/design-system --save
+npm install @sidhe/design-system
+<link rel="stylesheet" href="path/to/sidhe-tokens.css">
 
+res/values/sidhe_colors.xml
+res/values/sidhe_dimens.xml
+res/values/sidhe_typography.xml
+
+SIDHEColors.swift
+SIDHETypography.swift
+SIDHESpacing.swift
+
+/* CSS */
+.button {
+  background-color: var(--sidhe-color-primary-500);
+  font-size: var(--sidhe-font-size-md);
+  padding: var(--sidhe-spacing-3);
+  border-radius: var(--sidhe-radius-base8);
+}
+
+
+<!-- XML -->
+<Button
+  android:textColor="@color/sidhe_color_primary_500"
+  android:padding="@dimen/sidhe_spacing_3" />
+  
+// Swift
+label.textColor = SIDHEColors.primary.color500
+button.contentEdgeInsets = UIEdgeInsets(
+  top: SIDHESpacing.spacing3,
+  left: SIDHESpacing.spacing3,
+  bottom: SIDHESpacing.spacing3, 
+  right: SIDHESpacing.spacing3
+)
 
 ## Implementation Examples
 
 ## Web (CSS variable)
+/* Button Component Example */
+.button {
+  /* Colors */
+  background-color: var(--sidhe-color-primary-500);
+  color: white;
+  
+  /* Typography */
+  font-family: var(--sidhe-font-family-primary);
+  font-size: var(--sidhe-font-size-md);
+  font-weight: var(--sidhe-font-weight-medium);
+  
+  /* Layout */
+  padding: var(--sidhe-spacing-3) var(--sidhe-spacing-6);
+  border-radius: var(--sidhe-radius-base8);
+  
+  /* Effects */
+  box-shadow: var(--sidhe-effect-elevation-e1);
+}
 
+.button:hover {
+  background-color: var(--sidhe-color-primary-400);
+  box-shadow: var(--sidhe-effect-elevation-e2);
+}
 
+/* Card Component Example */
+.card {
+  background-color: white;
+  border-radius: var(--sidhe-radius-base8);
+  padding: var(--sidhe-spacing-6);
+  box-shadow: var(--sidhe-effect-elevation-e2);
+}
+
+.card-title {
+  font-family: var(--sidhe-font-family-secondary);
+  font-size: var(--sidhe-font-size-2xl);
+  font-weight: var(--sidhe-font-weight-bold);
+  margin-bottom: var(--sidhe-spacing-2);
+}
+
+/* Alert Component Example */
+.alert {
+  padding: var(--sidhe-spacing-4);
+  border-radius: var(--sidhe-radius-base4);
+  margin-bottom: var(--sidhe-spacing-4);
+}
+
+.alert-info {
 ## IOS (Swift) 
+import UIKit
 
+// Button Component Extension
+extension UIButton {
+    func applySIDHEPrimaryStyle() {
+        backgroundColor = SIDHEColors.primary.color500
+        setTitleColor(.white, for: .normal)
+        titleLabel?.font = UIFont(name: SIDHETypography.fontFamily.primary, size: SIDHETypography.fontSize.md)
+        layer.cornerRadius = SIDHERadius.base8
+        contentEdgeInsets = UIEdgeInsets(
+            top: SIDHESpacing.spacing3,
+            left: SIDHESpacing.spacing6,
+            bottom: SIDHESpacing.spacing3,
+            right: SIDHESpacing.spacing6
+        )
+        
+        // Add shadow
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.1
+    }
+    
+    func applySIDHESecondaryStyle() {
+        backgroundColor = SIDHEColors.secondary.color500
+        setTitleColor(.white, for: .normal)
+        titleLabel?.font = UIFont(name: SIDHETypography.fontFamily.primary, size: SIDHETypography.fontSize.md)
+        layer.cornerRadius = SIDHERadius.base8
+        contentEdgeInsets = UIEdgeInsets(
+            top: SIDHESpacing.spacing3,
+            left: SIDHESpacing.spacing6,
+            bottom: SIDHESpacing.spacing3,
+            right: SIDHESpacing.spacing6
+        )
+    }
+}
 
+// Text Style Extensions
+extension UILabel {
+    func applySIDHEHeading1Style() {
+        font = UIFont(name: SIDHETypography.fontFamily.secondary, size: SIDHETypography.fontSize.xl4)
+        textColor = SIDHEColors.neutral.color900
+    }
+    
+    func applySIDHEHeading2Style() {
+        font = UIFont(name: SIDHETypography.fontFamily.secondary, size: SIDHETypography.fontSize.xl3)
+        textColor = SIDHEColors.neutral.color900
+    }
+    
+    func applySIDHEBodyStyle() {
+        font = UIFont(name: SIDHETypography.fontFamily.primary, size: SIDHETypography.fontSize.md)
+        textColor = SIDHEColors.neutral.color800
+    }
+}
+
+// Card View Extension
+extension UIView {
+    func applySIDHECardStyle() {
+        backgroundColor = .white
+        layer.cornerRadius = SIDHERadius.base8
+        
+        // Add shadow
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 6
+        layer.shadowOpacity = 0.1
+    }
+}
+
+// Example Usage
+class ExampleViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Create a card
+        let cardView = UIView(frame: CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: 200))
+        cardView.applySIDHECardStyle()
+        view.addSubview(cardView)
+        
+        // Add a title to the card
+        let titleLabel = UILabel(frame: CGRect(x: 16, y: 16, width: cardView.bounds.width - 32, height: 30))
+        titleLabel.applySIDHEHeading2Style()
+        titleLabel.text = "SIDHE Design System"
+        cardView.addSubview(titleLabel)
+        
+        // Add a description
+        let descriptionLabel = UILabel(frame: CGRect(x: 16, y: 54, width: cardView.bounds.width - 32, height: 60))
+        descriptionLabel.a
+
+        import SwiftUI
+
+// Text Styles
+struct SIDHETextStyles {
+    struct Heading1: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .font(.custom(SIDHETypography.fontFamily.secondary, size: SIDHETypography.fontSize.xl4))
+                .foregroundColor(Color(SIDHEColors.neutral.color900))
+                .lineSpacing(8)
+        }
+    }
+    
+    struct Heading2: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .font(.custom(SIDHETypography.fontFamily.secondary, size: SIDHETypography.fontSize.xl3))
+                .foregroundColor(Color(SIDHEColors.neutral.color900))
+                .lineSpacing(6)
+        }
+    }
+    
+    struct BodyText: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .font(.custom(SIDHETypography.fontFamily.primary, size: SIDHETypography.fontSize.md))
+                .foregroundColor(Color(SIDHEColors.neutral.color800))
+                .lineSpacing(4)
+        }
+    }
+}
+
+// Button Styles
+struct SIDHEPrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.vertical, SIDHESpacing.spacing3)
+            .padding(.horizontal, SIDHESpacing.spacing6)
+            .background(
+                configuration.isPressed ? 
+                    Color(SIDHEColors.primary.color400) : 
+                    Color(SIDHEColors.primary.color500)
+            )
+            .foregroundColor(.white)
+            .cornerRadius(SIDHERadius.base8)
+            .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 1)
+    }
+}
+
+// View Extensions
+extension View {
+    func sidheHeading1() -> some View {
+        modifier(SIDHETextStyles.Heading1())
+    }
+    
+    func sidheHeading2() -> some View {
+        modifier(SIDHETextStyles.Heading2())
+    }
+    
+    func sidheBodyText() -> some View {
+        modifier(SIDHETextStyles.BodyText())
+    }
+}
+
+// Card Component
+struct SIDHECard<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        content
+            .padding(SIDHESpacing.spacing6)
+            .background(Color.white)
+            .cornerRadius(SIDHERadius.base8)
+            .shadow(color: Color.black.opacity(0.1), radius: 6, x: 0, y: 2)
+    }
+}
+
+// Example Usage
+struct ContentView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: SIDHESpacing.spacing6) {
+            Text("SIDHE Design System")
+                .sidheHeading1()
+            
+            SIDHECard {
+                VStack(alignment: .leading, spacing: SIDHESpacing.spacing4) {
+                    Text("SwiftUI Components")
+                        .sidheHeading2()
+                    
+                    Text("These components are built using the SIDHE design tokens to ensure consistent styling across the app.")
+                        .sidheBodyText()
+                    
+                    Button("Learn More") {
+                        // Action
+                    }
+                    .buttonStyle(SIDHEPrimaryButtonStyle())
+                    .padding(.top, SIDHESpacing.spacing2)
+                }
+            }
+        }
+        .padding(SIDHESpacing.spacing6)
+    }
+}
 
 ## Android (XML) 
 <!-- 
@@ -978,7 +1248,7 @@ npm install @sidhe/design-system --save
 
 ## Part 2: Reflection – Tokenizing a Brand's Style Guide
 1. Benefits Realized
-It was/is convient to have all of the colors and other styles in one refined place. However 
+It was/is convient to have all of the colors and other styles in one refined place. However I did miss somewhat of the ability to add new things etc in an easier way than putting them in the library/guide yes of course you are still able to edit things outside of guide but it is just more constrained overall.
 
 
 
@@ -991,6 +1261,7 @@ I found myself looking at my work then at my peers then to the internet to find 
 With control and anybody even making a slight change the code can stop working and it somthing I would be concerned about when functioning as a unite on something such as this, there is just so much cahnce of an error and I worry about something going wrong. In terms of working by myself its easy to go back in delete something then reaprroach it with new code or information, with others its not always the case. For instance as I work alone I rarely do push or pulls as I am the sole person in charge however in a team setting these are necessary to keep code organized and avoid unnecessary errors. 
 
 5. Automation and Pipeline Considerations
+Keepig consistent style guides is key and I almost feel as though why my automation and other portions didn't work is because of change breaking and small little lines that break other portions of code along the way. Though I do definitly think there is comofort if say code was the primary thing that you did as it would be easier to catch errors etc. 
 
 6. Tokens in the Wild
-
+From what I have seen many companies from apple to google tokenize as it creates easy accesible short cuts to components that both coders can use such as what can be seen here in the github and designers can mess around with such as a particular logo, type face, or radius it quickly makes things uniform. We were recently going over Apple's Material guide which in my opinion is an exccellent example of both a style guide and a token system with the website/library covering an extensive array of materials. 

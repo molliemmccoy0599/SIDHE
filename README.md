@@ -325,7 +325,30 @@ module.exports = {
 
 
 ## Package.json with Automation Scripts
-
+{
+  "name": "sidhe-design-system",
+  "version": "1.0.0",
+  "description": "SIDHE Design System Tokens",
+  "main": "index.js",
+  "scripts": {
+    "build": "style-dictionary build --config config.js",
+    "clean": "rm -rf dist",
+    "build:web": "style-dictionary build --config config.js --platform css,scss",
+    "build:android": "style-dictionary build --config config.js --platform android",
+    "build:ios": "style-dictionary build --config config.js --platform ios",
+    "build:all": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "design-system",
+    "tokens",
+    "sidhe"
+  ],
+  "author": "SIDHE Design Team",
+  "license": "MIT",
+  "dependencies": {
+    "style-dictionary": "^3.8.0"
+  }
+}
 
 ## Github Actions Workflow 
 

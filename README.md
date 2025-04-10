@@ -195,52 +195,37 @@ sidhe-design-system/
 ### Style Dictionary Configuration (config.json)
 const StyleDictionary = require('style-dictionary');
 
-// Custom transforms
 StyleDictionary.registerTransform({
   name: 'size/px',
   type: 'value',
-  matcher: (token) => {
-    return typeof token.value === 'string' && token.value.endsWith('px');
-  },
-  transformer: (token) => {
-    return parseFloat(token.value.replace('px', ''));
-  }
+  matcher: (token) => token.value.endsWith('px'),
+  transformer: (token) => parseFloat(token.value.replace('px', ''))
 });
 
-// Base configuration
 module.exports = {
   source: ['tokens/**/*.json'],
   platforms: {
-    // Web: CSS Variables
     css: {
       transformGroup: 'css',
       buildPath: 'dist/web/css/',
       files: [{
         destination: 'sidhe-tokens.css',
         format: 'css/variables',
-        options: {
-          selector: ':root',
-          outputReferences: true
-        }
+        options: { selector: ':root' }
       }]
     },
     
-    // Web: SCSS Variables
     scss: {
       transformGroup: 'scss',
       buildPath: 'dist/web/scss/',
       files: [{
         destination: '_sidhe-tokens.scss',
-        format: 'scss/variables',
-        options: {
-          outputReferences: true
-        }
+        format: 'scss/variables'
       }]
     },
     
-    // Android: XML Resources
     android: {
-      transforms: ['attribute/cti', 'name/cti/kebab', 'size/density', 'color/hex'],
+      transformGroup: 'android',
       buildPath: 'dist/android/res/values/',
       files: [
         {
@@ -251,34 +236,26 @@ module.exports = {
         {
           destination: 'sidhe_dimens.xml',
           format: 'android/dimens',
-          filter: {
-            attributes: { type: ['spacing', 'borderRadius', 'fontSize'] }
-          }
+          filter: { type: 'size' }
         }
       ]
     },
     
-    // iOS: Swift Constants
     ios: {
       transformGroup: 'ios',
-      buildPath: 'dist/ios/Sources/',
+      buildPath: 'dist/ios/',
       files: [
         {
           destination: 'SIDHEColors.swift',
-          format: 'ios/swift/enum.swift',
+          format: 'ios/colors.swift',
           className: 'SIDHEColors',
           filter: { type: 'color' }
-        },
-        {
-          destination: 'SIDHETypography.swift',
-          format: 'ios/swift/enum.swift',
-          className: 'SIDHETypography',
-          filter: { attributes: { category: 'font' } }
         }
       ]
     }
   }
 };
+
 
 ## Package.json with Automation Scripts
 {

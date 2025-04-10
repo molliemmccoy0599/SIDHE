@@ -260,274 +260,34 @@ module.exports = {
 
 
 ## Github Actions Workflow 
-name: Build and Deploy Design Tokens
 
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'tokens/**'
-      - 'config.js'
-      - 'package.json'
-      - '.github/workflows/build-tokens.yml'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'tokens/**'
-      - 'config.js'
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'production'
-        type: choice
-        options:
-          - production
-          - staging
-
-jobs:
-  validate:
-    name: Validate Tokens
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Validate token structure
-        run: npm run validate:tokens
-
-  build:
-    name: Build Tokens
-    needs: validate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build tokens for all platforms
-        run: npm run build:tokens
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: token-distribution
-          path: dist/
-          retention-days: 7
-
-  test:
-    name: Test Token Output
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: token-distribution
-          path: dist/
-
-      - name: Run tests
-        run: npm test
-
-  deploy-npm:
-    name: Publish to NPM
-    needs: test
-    if: github.event_name == 'push' || github.event.inputs.environment == 'production'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          registry-url: 'https://registry.npmjs.org'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: token-distribution
-          path: dist/
-
-      - name: Publish to NPM
-        run: |
-          if [[ $GITHUB_REF == refs/tags/v* ]]; then
-            npm publish
-          else
-            npm publish --tag next
-          fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  deploy-docs:
-    name: Deploy Documentation
-    needs: test
-    if: github.event_name == 'push' || github.event.inputs.environment == 'production'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: token-distribution
-          path: dist/
-
-      - name: Build documentation
-        run: npm run build:docs
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
-        with:
-          branch: gh-pages
-          folder: dist/storybook
-          clean: true
-
-  create-release:
-    name: Create GitHub Release
-    needs: [deploy-npm, deploy-docs]
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: token-distribution
-          path: dist/
-
-      - name: Zip artifacts
-        run: |
-          zip -r sidhe-tokens-android.zip dist/android
-          zip -r sidhe-tokens-ios.zip dist/ios
-          zip -r sidhe-tokens-web.zip dist/web
-          zip -r sidhe-tokens-all.zip dist/
-
-      - name: Generate Release Notes
-        run: |
-          echo "# SIDHE Design System Release" > RELEASE_NOTES.md
-          echo "## Changes in this release" >> RELEASE_NOTES.md
-          git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" >> RELEASE_NOTES.md
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            sidhe-tokens-android.zip
-            sidhe-tokens-ios.zip
-            sidhe-tokens-web.zip
-            sidhe-tokens-all.zip
-          body_path: RELEASE_NOTES.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
 ## Full Dictionary 
 
 ## Color 
-/* ===== 1. COLORS ===== */
-// colors.xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Primary Colors -->
-    <color name="figr_color_primary_100">#FFF686C2</color>
-    <color name="figr_color_primary_200">#FFF45BB6</color>
-    <color name="figr_color_primary_300">#FFF233AB</color>
-    <color name="figr_color_primary_400">#FFEF0A9F</color>
-    <color name="figr_color_primary_500">#FFEC0094</color>
-    <color name="figr_color_primary_10">#1AEC0094</color>
-
-    <!-- Secondary Colors -->
-    <color name="figr_color_secondary_100">#FFA888E5</color>
-    <color name="figr_color_secondary_200">#FF8C59DD</color>
-    <color name="figr_color_secondary_300">#FF702BD5</color>
-    <color name="figr_color_secondary_400">#FF5500CC</color>
-    <color name="figr_color_secondary_500">#FF3A0099</color>
-    <color name="figr_color_secondary_10">#1A3A0099</color>
-
-    <!-- Neutral Colors -->
-    <color name="figr_color_neutral_100">#FFF5F5F5</color>
-    <color name="figr_color_neutral_200">#FFE0E0E0</color>
-    <color name="figr_color_neutral_300">#FFBDBDBD</color>
-    <color name="figr_color_neutral_400">#FF9E9E9E</color>
-    <color name="figr_color_neutral_500">#FF757575</color>
-    <color name="figr_color_neutral_600">#FF616161</color>
-    <color name="figr_color_neutral_700">#FF424242</color>
-    <color name="figr_color_neutral_800">#FF303030</color>
-    <color name="figr_color_neutral_900">#FF212121</color>
-    <color name="figr_color_neutral_1000">#FF121212</color>
-    <color name="figr_color_neutral_10">#1A212121</color>
-
-    <!-- Feedback Colors -->
-    <color name="figr_color_red_100">#FFFF5A5A</color>
-    <color name="figr_color_red_200">#FFDD0E10</color>
-    <color name="figr_color_red_10">#1ADD0E10</color>
-
-    <color name="figr_color_yellow_100">#FFFFDE59</color>
-    <color name="figr_color_yellow_200">#FFC9AB19</color>
-    <color name="figr_color_yellow_10">#1AC9AB19</color>
-
-    <color name="figr_color_green_100">#FF56E0B2</color>
-    <color name="figr_color_green_200">#FF17AF66</color>
-    <color name="figr_color_green_10">#1A17AF66</color>
-    
-    <!-- Third Color - Lime -->
-    <color name="figr_color_thirdColor_100">#FFF8FAD2</color>
-    <color name="figr_color_thirdColor_200">#FFE6F746</color>
-    <color name="figr_color_thirdColor_300">#FFC6DC26</color>
-    <color name="figr_color_thirdColor_400">#FFA6C106</color>
-    <color name="figr_color_thirdColor_500">#FF859C05</color>
-    <color name="figr_color_thirdColor_10">#1A859C05</color>
-    <color name="figr_color_thirdColor_50">#80C6DC26</color>
-</resources>
+// Color tokens
+{
+  "color": {
+    "primary": {
+      "100": { "value": "#F686C2", "type": "color" },
+      "200": { "value": "#F45BB6", "type": "color" },
+      "300": { "value": "#F233AB", "type": "color" },
+      "400": { "value": "#EF0A9F", "type": "color" },
+      "500": { "value": "#EC0094", "type": "color" }
+    },
+    "secondary": {
+      "100": { "value": "#A888E5", "type": "color" },
+      "200": { "value": "#8C59DD", "type": "color" },
+      "300": { "value": "#702BD5", "type": "color" },
+      "400": { "value": "#5500CC", "type": "color" },
+      "500": { "value": "#3A0099", "type": "color" }
+    },
+    "neutral": {
+      "100": { "value": "#F5F5F5", "type": "color" },
+      "500": { "value": "#757575", "type": "color" },
+      "900": { "value": "#212121", "type": "color" }
+    }
+  }
+}
 
 ## Typography 
 // 2. TYPOGRAPHY TOKENS

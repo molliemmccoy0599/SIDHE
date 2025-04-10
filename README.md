@@ -1,8 +1,10 @@
 ## SIDHE Token Design System 
 
 ## Project Overview
+My project is focused on the cannabis brand SIDHE with tokens for typography, spacing, colors, and other visual elements. The system uses Style Dictionary to generate platform-specific outputs for web, iOS, and Android. The elements of code make up each individual token. 
 
 ## Project Structure 
+
 # SIDHE Design System - Project Structure
 
 ```

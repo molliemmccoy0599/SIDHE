@@ -195,116 +195,40 @@ sidhe-design-system/
 
 ### Style Dictionary Configuration (config.json)
 {
-    "typography": {
-        "fontFamilyPrimary": "Figr Display",
-        "fontFamilySecondary": "Figr Sans",
-        "weights": {
-            "regular": 400,
-            "medium": 500,
-            "semibold": 600,
-            "bold": 700
-        },
-        "sizes": {
-            "display1": "72px",
-            "display2": "60px",
-            "display3": "48px",
-            "headline1": "36px",
-            "headline2": "30px",
-            "headline3": "24px",
-            "bodyLarge": "20px",
-            "bodyMedium": "16px",
-            "bodySmall": "14px",
-            "caption": "12px"
-        }
+  "typography": {
+    "fonts": {
+      "primary": "Figr Display, serif",
+      "secondary": "Figr Sans, sans-serif"
     },
-    "colorTokens": {
-        "primary": {
-            "100": "#D5B3FF",
-            "200": "#B476FF",
-            "300": "#9C44FF",
-            "400": "#7E12FF",
-            "500": "#5128FB",
-            "10": "transparent"
-        },
-        "secondary": {
-            "100": "#E1D5FF",
-            "200": "#C6A3FF",
-            "300": "#AD99FF",
-            "400": "#8A40FF",
-            "500": "#5000D4",
-            "10": "transparent"
-        },
-        "neutral": {
-            "100": "#FAFAFC",
-            "200": "#F4F4F4",
-            "300": "#E8E8E8",
-            "400": "#C2C2C2",
-            "500": "#9E9E9E",
-            "600": "#7A7A7A",
-            "700": "#555555",
-            "800": "#333333",
-            "900": "#1A1A1A",
-            "1000": "#000000",
-            "10": "transparent"
-        },
-        "accent": {
-            "red": "#FF5C5C",
-            "green": "#4CAF50",
-            "blue": "#2196F3",
-            "orange": "#FF9800"
-        }
+    "sizes": {
+      "display-1": "72px",
+      "display-2": "60px",
+      "display-3": "48px",
+      "headline-1": "36px",
+      "headline-2": "30px",
+      "headline-3": "24px",
+      "body-large": "20px",
+      "body-medium": "16px",
+      "body-small": "14px",
+      "caption": "12px"
     },
-    "spacing": {
-        "compact": [
-            2,
-            4
-        ],
-        "balanced": [
-            8,
-            12
-        ],
-        "expanded": [
-            16,
-            24
-        ],
-        "tokens": {
-            "0": 2,
-            "1": 4,
-            "2": 8,
-            "3": 12,
-            "4": 16,
-            "5": 20,
-            "6": 24,
-            "7": 32,
-            "8": 40,
-            "9": 48,
-            "10": 56
-        }
-    },
-    "stroke": {
-        "fine": 1,
-        "medium": 2,
-        "thick": 4,
-        "tokens": {
-            "0": 1.2,
-            "1": 1.5,
-            "2": 4
-        }
-    },
-    "radius": {
-        "base0": 0,
-        "base8": 8,
-        "baseRound": 16
-    },
-    "effects": {
-        "softDiffusion": "E0",
-        "strongDiffusion": "E2",
-        "neobrutalism": "E3",
-        "elevation": "E0-E3",
-        "sunken": "E0-E2",
-        "glow": "E1-E3"
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
     }
-}
+  },
+  "colors": {
+    "primary": {
+      "100": "#D5B3FF",
+      "200": "#B476FF",
+      "300": "#9C44FF",
+      "400": "#7E12FF",
+      "500": "#5128FB"
+    },
+    "secondary": {
+      "100
 
 ## Package.json with Automation Scripts
 

@@ -432,8 +432,47 @@ module.exports = {
 }
 
 ## Github Actions Workflow 
+name: Build and Deploy Design Tokens
 
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'tokens/**/*.json'
+      - 'config.js'
+  pull_request:
+    branches: [ main ]
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm ci
+      - run: npm run build:all
+      - uses: actions/upload-artifact@v3
+        with:
+          name: token-dist
+          path: dist/
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: token-dist
+          path: dist/
+      - name: Deploy documentation
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/docs
+          branch: gh-pages
 
 ## Installation and Usage 
 

@@ -193,13 +193,6 @@ sidhe-design-system/
 
 
 ### Style Dictionary Configuration (config.json)
-/**
- * SIDHE Design System - Style Dictionary Configuration
- *
- * This configuration file defines how to transform the source tokens
- * into platform-specific formats.
- */
-
 const StyleDictionary = require('style-dictionary');
 
 // Custom transforms
@@ -207,29 +200,21 @@ StyleDictionary.registerTransform({
   name: 'size/px',
   type: 'value',
   matcher: (token) => {
-    return token.value.toString().endsWith('px');
+    return typeof token.value === 'string' && token.value.endsWith('px');
   },
   transformer: (token) => {
-    return token.value.toString().replace('px', '');
+    return parseFloat(token.value.replace('px', ''));
   }
 });
 
-// Custom formats
-StyleDictionary.registerFormat({
-  name: 'json/nested',
-  formatter: function(dictionary) {
-    return JSON.stringify(dictionary.tokens, null, 2);
-  }
-});
-
-// Style Dictionary Configuration
+// Base configuration
 module.exports = {
   source: ['tokens/**/*.json'],
   platforms: {
     // Web: CSS Variables
     css: {
       transformGroup: 'css',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/web/css/',
       files: [{
         destination: 'sidhe-tokens.css',
         format: 'css/variables',
@@ -243,9 +228,9 @@ module.exports = {
     // Web: SCSS Variables
     scss: {
       transformGroup: 'scss',
-      buildPath: 'dist/web/',
+      buildPath: 'dist/web/scss/',
       files: [{
-        destination: 'sidhe-tokens.scss',
+        destination: '_sidhe-tokens.scss',
         format: 'scss/variables',
         options: {
           outputReferences: true
@@ -255,21 +240,19 @@ module.exports = {
     
     // Android: XML Resources
     android: {
-      transformGroup: 'android',
-      buildPath: 'dist/android/src/main/res/values/',
+      transforms: ['attribute/cti', 'name/cti/kebab', 'size/density', 'color/hex'],
+      buildPath: 'dist/android/res/values/',
       files: [
         {
           destination: 'sidhe_colors.xml',
           format: 'android/colors',
-          filter: {
-            type: 'color'
-          }
+          filter: { type: 'color' }
         },
         {
           destination: 'sidhe_dimens.xml',
           format: 'android/dimens',
           filter: {
-            type: 'size'
+            attributes: { type: ['spacing', 'borderRadius', 'fontSize'] }
           }
         }
       ]
@@ -278,43 +261,19 @@ module.exports = {
     // iOS: Swift Constants
     ios: {
       transformGroup: 'ios',
-      buildPath: 'dist/ios/',
+      buildPath: 'dist/ios/Sources/',
       files: [
         {
-          destination: 'SidheColors.swift',
-          format: 'ios/colors.swift',
-          className: 'SidheColors',
-          filter: {
-            type: 'color'
-          }
+          destination: 'SIDHEColors.swift',
+          format: 'ios/swift/enum.swift',
+          className: 'SIDHEColors',
+          filter: { type: 'color' }
         },
         {
-          destination: 'SidheTypography.swift',
-          format: 'ios/swift/any',
-          className: 'SidheTypography',
-          filter: {
-            type: 'typography'
-          }
-        },
-        {
-          destination: 'SidheSpacing.swift',
-          format: 'ios/swift/any',
-          className: 'SidheSpacing',
-          filter: {
-            type: 'size'
-          }
-        }
-      ]
-    },
-    
-    // JSON for reference
-    json: {
-      transformGroup: 'js',
-      buildPath: 'dist/json/',
-      files: [
-        {
-          destination: 'sidhe-tokens.json',
-          format: 'json/nested'
+          destination: 'SIDHETypography.swift',
+          format: 'ios/swift/enum.swift',
+          className: 'SIDHETypography',
+          filter: { attributes: { category: 'font' } }
         }
       ]
     }

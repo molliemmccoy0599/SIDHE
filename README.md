@@ -194,17 +194,7 @@ sidhe-design-system/
 
 
 ### Style Dictionary Configuration (config.json)
-{
-  "source": ["tokens/**/*.json"],
-  "platforms": {
-    "web": {
-      "transformGroup": "web",
-      "buildPath": "build/web/",
-      "files": [
-        {
-          "destination": "variables.css",
-          "format": "css/variables"
-        } 
+
 const StyleDictionary = require('style-dictionary');
 
 StyleDictionary.registerTransform({

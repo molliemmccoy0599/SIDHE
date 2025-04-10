@@ -262,37 +262,28 @@ module.exports = {
   "version": "1.0.0",
   "description": "SIDHE Design System Tokens and Components",
   "main": "dist/js/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "clean": "rimraf dist",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md}\"",
-    
     "build": "npm run clean && npm run build:tokens && npm run build:docs",
     "build:tokens": "style-dictionary build --config ./config.js",
     "build:web": "style-dictionary build --config ./config.js --platform css,scss,js",
     "build:android": "style-dictionary build --config ./config.js --platform android",
     "build:ios": "style-dictionary build --config ./config.js --platform ios",
-    
     "build:docs": "npm run build:storybook",
     "build:storybook": "build-storybook -c .storybook -o dist/storybook",
-    
     "start": "npm run start:storybook",
     "start:storybook": "start-storybook -p 6006",
-    
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "preversion": "npm run test",
     "postversion": "git push && git push --tags",
-    
     "publish:tokens": "npm run build:tokens && npm publish --access public",
     "publish:docs": "npm run build:docs && gh-pages -d dist/storybook",
-    
     "watch": "npm-watch",
     "validate:tokens": "node ./scripts/validate-tokens.js"
   },
@@ -316,44 +307,20 @@ module.exports = {
     "*.{js,jsx}": ["eslint --fix", "prettier --write"],
     "*.{json,md}": ["prettier --write"]
   },
-  "keywords": [
-    "design-system",
-    "tokens",
-    "sidhe",
-    "style-dictionary",
-    "css",
-    "scss",
-    "android",
-    "ios"
-  ],
+  "keywords": ["design-system", "tokens", "sidhe", "style-dictionary"],
   "author": "SIDHE Design Team",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sidhe/design-system.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sidhe/design-system/issues"
-  },
-  "homepage": "https://sidhe.github.io/design-system",
   "dependencies": {
     "style-dictionary": "^3.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
-    "@storybook/addon-actions": "^7.0.20",
-    "@storybook/addon-essentials": "^7.0.20",
-    "@storybook/addon-links": "^7.0.20",
     "@storybook/react": "^7.0.20",
     "auto-changelog": "^2.4.0",
-    "babel-loader": "^9.1.2",
     "eslint": "^8.42.0",
-    "eslint-config-prettier": "^8.8.0",
     "gh-pages": "^5.0.0",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
-    "lint-staged": "^13.2.2",
     "npm-watch": "^0.11.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1"

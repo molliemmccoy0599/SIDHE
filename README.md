@@ -256,7 +256,6 @@ module.exports = {
   }
 };
 
-
 ## Package.json with Automation Scripts
 {
   "name": "sidhe-design-system",

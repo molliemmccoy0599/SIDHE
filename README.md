@@ -281,12 +281,11 @@ module.exports = {
 
 ## Installation and Usage 
 
-SIDHE Design System - Installation
 Web (CSS/SCSS)
 Option 1: NPM Package (Recommended)
 
-git clone https://github.com/yourusername/sturtz-copeland-style-dictionary.git
-cd sturtz-copeland-style-dictionary
+npm install @sidhe/design-system --save
+
 
 ## Implementation Examples
 

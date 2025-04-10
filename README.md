@@ -260,27 +260,17 @@ module.exports = {
 {
   "name": "@sidhe/design-system",
   "version": "1.0.0",
-  "description": "SIDHE Design System",
   "scripts": {
-    "clean": "rimraf dist",
     "build": "style-dictionary build",
-    "build:web": "style-dictionary build --platform css,scss",
+    "build:web": "style-dictionary build --platform css",
     "build:android": "style-dictionary build --platform android",
-    "build:ios": "style-dictionary build --platform ios",
-    "test": "jest",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "watch": "npm-watch"
+    "build:ios": "style-dictionary build --platform ios"
   },
   "dependencies": {
-    "style-dictionary": "^3.8.0"
+    "style-dictionary": "3.8.0"
   },
   "devDependencies": {
-    "eslint": "^8.42.0",
-    "jest": "^29.5.0",
-    "npm-watch": "^0.11.0",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1"
+    "rimraf": "5.0.1"
   }
 }
 

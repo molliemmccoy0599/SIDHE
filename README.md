@@ -442,38 +442,40 @@ on:
       - 'config.js'
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm ci
-      - run: npm run build:all
-      - uses: actions/upload-artifact@v3
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all tokens
+        run: npm run build:all
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: token-dist
           path: dist/
+          retention-days: 7
 
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
-        with:
-          name: token-dist
-          path: dist/
-      - name: Deploy documentation
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/docs
-          branch: gh-pages
-
+    
 ## Installation and Usage 
 
 

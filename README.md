@@ -260,73 +260,27 @@ module.exports = {
 {
   "name": "@sidhe/design-system",
   "version": "1.0.0",
-  "description": "SIDHE Design System Tokens and Components",
-  "main": "dist/js/index.js",
-  "files": ["dist"],
+  "description": "SIDHE Design System",
   "scripts": {
     "clean": "rimraf dist",
-    "lint": "eslint .",
-    "format": "prettier --write \"**/*.{js,json,md}\"",
-    "build": "npm run clean && npm run build:tokens && npm run build:docs",
-    "build:tokens": "style-dictionary build --config ./config.js",
-    "build:web": "style-dictionary build --config ./config.js --platform css,scss,js",
-    "build:android": "style-dictionary build --config ./config.js --platform android",
-    "build:ios": "style-dictionary build --config ./config.js --platform ios",
-    "build:docs": "npm run build:storybook",
-    "build:storybook": "build-storybook -c .storybook -o dist/storybook",
-    "start": "npm run start:storybook",
-    "start:storybook": "start-storybook -p 6006",
+    "build": "style-dictionary build",
+    "build:web": "style-dictionary build --platform css,scss",
+    "build:android": "style-dictionary build --platform android",
+    "build:ios": "style-dictionary build --platform ios",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "version": "auto-changelog -p && git add CHANGELOG.md",
-    "preversion": "npm run test",
-    "postversion": "git push && git push --tags",
-    "publish:tokens": "npm run build:tokens && npm publish --access public",
-    "publish:docs": "npm run build:docs && gh-pages -d dist/storybook",
-    "watch": "npm-watch",
-    "validate:tokens": "node ./scripts/validate-tokens.js"
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "watch": "npm-watch"
   },
-  "watch": {
-    "build:tokens": {
-      "patterns": ["tokens/**/*.json"],
-      "extensions": "json"
-    },
-    "build:docs": {
-      "patterns": ["docs/**/*", "examples/**/*"],
-      "extensions": "md,js,jsx"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": ["eslint --fix", "prettier --write"],
-    "*.{json,md}": ["prettier --write"]
-  },
-  "keywords": ["design-system", "tokens", "sidhe", "style-dictionary"],
-  "author": "SIDHE Design Team",
-  "license": "MIT",
   "dependencies": {
     "style-dictionary": "^3.8.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.5",
-    "@storybook/react": "^7.0.20",
-    "auto-changelog": "^2.4.0",
     "eslint": "^8.42.0",
-    "gh-pages": "^5.0.0",
-    "husky": "^8.0.3",
     "jest": "^29.5.0",
     "npm-watch": "^0.11.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
   }
 }
 

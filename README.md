@@ -477,7 +477,7 @@ jobs:
     steps:
     
 ## Installation and Usage 
-
+npm install @sidhe/design-system --save
 
 
 ## Implementation Examples

@@ -257,22 +257,7 @@ module.exports = {
 };
 
 ## Package.json with Automation Scripts
-{
-  "name": "@sidhe/design-system",
-  "version": "1.0.0",
-  "scripts": {
-    "build": "style-dictionary build",
-    "build:web": "style-dictionary build --platform css",
-    "build:android": "style-dictionary build --platform android",
-    "build:ios": "style-dictionary build --platform ios"
-  },
-  "dependencies": {
-    "style-dictionary": "3.8.0"
-  },
-  "devDependencies": {
-    "rimraf": "5.0.1"
-  }
-}
+
 
 ## Github Actions Workflow 
 name: Build and Deploy Design Tokens

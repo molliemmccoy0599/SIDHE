@@ -262,29 +262,10 @@ module.exports = {
 
 ## Github Actions Workflow 
 
-## Full Dictionary 
-
-## Color 
-
-## Typography 
-
-## Effects
-
-
-## Radius 
-
-
-## Stroke 
-
-## Spacing 
 
 
 ## Installation and Usage 
 
-Web (CSS/SCSS)
-Option 1: NPM Package (Recommended)
-
-npm install @sidhe/design-system --save
 
 
 ## Implementation Examples
@@ -783,4 +764,19 @@ npm install @sidhe/design-system --save
 </androidx.core.widget.NestedScrollView>
 
 
-            
+## Part 2: Reflection – Tokenizing a Brand's Style Guide
+1. Benefits Realized
+It was/is convient to have all of the colors and other styles in one refined place.
+
+
+
+2. Drawbacks and Challenges
+This was the worst project for me with constant frustration met across the board, the video of how to do the demo was never shared and I found myself floundering as I cannot learn something by just watching or attempting to quickly follow along. As for Drawbacks of even having a token system like this, is that it over complicates absolutely everything leading to little to no flexibility in changes or shifts that need to be made and creates confines that are smothering. The amount of stress and also just sleep that was lost on this project is ridiculous, I found it to be very difficult for very little to absolutely no pay off. 
+
+3. Version Control and Governance
+With control and anybody even making a slight change the code can stop working and it somthing I would be concerned about when functioning as a unite on something such as this, there is jsut so much room for error and 
+
+4. Automation and Pipeline Considerations
+
+5. Tokens in the Wild
+

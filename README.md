@@ -264,7 +264,6 @@ module.exports = {
 ## Full Dictionary 
 
 ## Color 
-// Color tokens
 {
   "color": {
     "primary": {
@@ -288,7 +287,6 @@ module.exports = {
     }
   }
 }
-
 ## Typography 
 // 2. TYPOGRAPHY TOKENS
 const FigrTypography = {

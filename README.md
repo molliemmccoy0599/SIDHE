@@ -1,6 +1,7 @@
 ## SIDHE Token Design System 
 
 ## Project Overview
+
 ## Project Structure 
 # SIDHE Design System - Project Structure
 
@@ -280,827 +281,146 @@ module.exports = {
 
 ## Installation and Usage 
 
-## Web (CSS variable)
-/**
- * SIDHE Design System - Web Implementation
- * 
- * This file demonstrates how to implement the SIDHE design tokens in a web project.
- */
-
-/**
- * 1. Import the design tokens
- * You can import the pre-generated CSS file:
- */
-
-/* In your HTML */
-// <link rel="stylesheet" href="path/to/sidhe-tokens.css">
-
-/* Or in your CSS/SCSS */
-// @import 'node_modules/@sidhe/design-tokens/dist/web/sidhe-tokens.css';
-
-
-/**
- * 2. Implementation Examples
- */
-
-/* Button Components */
-.button {
-  /* Base button styles */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--sidhe-font-family-primary);
-  font-weight: var(--sidhe-font-weight-medium);
-  font-size: var(--sidhe-font-size-md);
-  padding: var(--sidhe-spacing-3) var(--sidhe-spacing-6);
-  border-radius: var(--sidhe-radius-base8);
-  transition: background-color 0.2s, box-shadow 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-.button-primary {
+## Installation
+Web (CSS/SCSS)
+Option 1: NPM Package (Recommended)
+bashnpm install @sidhe/design-system --save
+Option 2: CDN
+html<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sidhe/design-system/dist/web/css/sidhe-tokens.css">
+Option 3: Direct Download
+Download the CSS file from the releases page and include it in your project:
+html<link rel="stylesheet" href="path/to/sidhe-tokens.css">
+Usage
+## Web Implementation
+Using CSS Variables
+css.my-button {
+  /* Colors */
   background-color: var(--sidhe-color-primary-500);
   color: white;
-  box-shadow: var(--sidhe-effect-elevation-1);
-}
-
-.button-primary:hover {
-  background-color: var(--sidhe-color-primary-400);
-  box-shadow: var(--sidhe-effect-elevation-2);
-}
-
-.button-secondary {
-  background-color: var(--sidhe-color-secondary-500);
-  color: white;
-  box-shadow: var(--sidhe-effect-elevation-1);
-}
-
-.button-secondary:hover {
-  background-color: var(--sidhe-color-secondary-400);
-  box-shadow: var(--sidhe-effect-elevation-2);
-}
-
-.button-ghost {
-  background-color: transparent;
-  color: var(--sidhe-color-neutral-900);
-  box-shadow: none;
-}
-
-.button-ghost:hover {
-  background-color: var(--sidhe-color-neutral-100);
-}
-
-/* Card Component */
-.card {
-  background-color: white;
-  border-radius: var(--sidhe-radius-base8);
-  box-shadow: var(--sidhe-effect-elevation-2);
-  padding: var(--sidhe-spacing-6);
-}
-
-.card-header {
-  margin-bottom: var(--sidhe-spacing-4);
-}
-
-.card-title {
-  font-family: var(--sidhe-font-family-secondary);
-  font-size: var(--sidhe-font-size-2xl);
-  font-weight: var(--sidhe-font-weight-bold);
-  color: var(--sidhe-color-neutral-900);
-  margin: 0 0 var(--sidhe-spacing-2) 0;
-}
-
-.card-subtitle {
+  
+  /* Typography */
   font-family: var(--sidhe-font-family-primary);
   font-size: var(--sidhe-font-size-md);
-  color: var(--sidhe-color-neutral-600);
-  margin: 0;
-}
-
-.card-content {
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-md);
-  line-height: var(--sidhe-line-height-normal);
-  color: var(--sidhe-color-neutral-800);
-}
-
-/* Typography System */
-.heading-1 {
-  font-family: var(--sidhe-font-family-secondary);
-  font-size: var(--sidhe-font-size-5xl);
-  font-weight: var(--sidhe-font-weight-bold);
-  line-height: var(--sidhe-line-height-tight);
-  letter-spacing: var(--sidhe-letter-spacing-tight);
-  color: var(--sidhe-color-neutral-900);
-}
-
-.heading-2 {
-  font-family: var(--sidhe-font-family-secondary);
-  font-size: var(--sidhe-font-size-4xl);
-  font-weight: var(--sidhe-font-weight-bold);
-  line-height: var(--sidhe-line-height-tight);
-  letter-spacing: var(--sidhe-letter-spacing-tight);
-  color: var(--sidhe-color-neutral-900);
-}
-
-.heading-3 {
-  font-family: var(--sidhe-font-family-secondary);
-  font-size: var(--sidhe-font-size-3xl);
-  font-weight: var(--sidhe-font-weight-semibold);
-  line-height: var(--sidhe-line-height-tight);
-  color: var(--sidhe-color-neutral-900);
-}
-
-.body-text {
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-md);
-  font-weight: var(--sidhe-font-weight-regular);
-  line-height: var(--sidhe-line-height-normal);
-  color: var(--sidhe-color-neutral-800);
-}
-
-.body-text-small {
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-sm);
-  font-weight: var(--sidhe-font-weight-regular);
-  line-height: var(--sidhe-line-height-normal);
-  color: var(--sidhe-color-neutral-800);
-}
-
-.caption {
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-xs);
-  font-weight: var(--sidhe-font-weight-regular);
-  line-height: var(--sidhe-line-height-normal);
-  color: var(--sidhe-color-neutral-600);
-}
-
-/* Form Components */
-.input {
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-md);
-  color: var(--sidhe-color-neutral-900);
-  padding: var(--sidhe-spacing-3) var(--sidhe-spacing-4);
-  border: 1px solid var(--sidhe-color-neutral-300);
-  border-radius: var(--sidhe-radius-base4);
-  background-color: white;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-shadow: var(--sidhe-effect-sunken-sm);
-}
-
-.input:focus {
-  outline: none;
-  border-color: var(--sidhe-color-primary-500);
-  box-shadow: 0 0 0 3px var(--sidhe-color-primary-10);
-}
-
-.input-label {
-  display: block;
-  font-family: var(--sidhe-font-family-primary);
-  font-size: var(--sidhe-font-size-sm);
   font-weight: var(--sidhe-font-weight-medium);
-  color: var(--sidhe-color-neutral-800);
-  margin-bottom: var(--sidhe-spacing-2);
-}
-
-/* Alert Components */
-.alert {
-  padding: var(--sidhe-spacing-4);
-  border-radius: var(--sidhe-radius-base4);
-  margin-bottom: var(--sidhe-spacing-4);
-  display: flex;
-  align-items: flex-start;
-}
-
-.alert-info {
-  background-color: var(--sidhe-color-secondary-10);
-  border-left: var(--sidhe-stroke-width-medium) solid var(--sidhe-color-secondary-500);
-}
-
-.alert-success {
-  background-color: var(--sidhe-color-green-10);
-  border-left: var(--sidhe-stroke-width-medium) solid var(--sidhe-color-green-200);
-}
-
-.alert-warning {
-  background-color: var(--sidhe-color-yellow-10);
-  border-left: var(--sidhe-stroke-width-medium) solid var(--sidhe-color-yellow-200);
-}
-
-.alert-error {
-  background-color: var(--sidhe-color-red-10);
-  border-left: var(--sidhe-stroke-width-medium) solid var(--sidhe-color-red-200);
-}
-
-/* Layout System */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--sidhe-spacing-4);
-}
-
-.layout-stack-sm > * + * {
-  margin-top: var(--sidhe-spacing-2);
-}
-
-.layout-stack-md > * + * {
-  margin-top: var(--sidhe-spacing-4);
-}
-
-.layout-stack-lg > * + * {
-  margin-top: var(--sidhe-spacing-8);
-}
-
-/* Example Usage in HTML
-<div class="container">
-  <h1 class="heading-1">SIDHE Design System</h1>
   
-  <div class="card">
-    <div class="card-header">
-      <h2 class="card-title">Welcome</h2>
-      <p class="card-subtitle">Design system implementation</p>
-    </div>
-    <div class="card-content">
-      <p class="body-text">This is an example of the SIDHE design system implementation.</p>
-    </div>
-  </div>
+  /* Layout */
+  padding: var(--sidhe-spacing-3) var(--sidhe-spacing-6);
+  border-radius: var(--sidhe-radius-base8);
   
-  <div class="layout-stack-md">
-    <div class="alert alert-info">
-      <p class="body-text">This is an informational message.</p>
-    </div>
+  /* Effects */
+  box-shadow: var(--sidhe-effect-elevation-e1);
+}
+
+.my-button:hover {
+  background-color: var(--sidhe-color-primary-400);
+  box-shadow: var(--sidhe-effect-elevation-e2);
+}
+## Using SCSS Variables
+scss@import '@sidhe/design-system/dist/web/scss/sidhe-tokens';
+
+.my-button {
+  background-color: $sidhe-color-primary-500;
+  color: white;
+  font-family: $sidhe-font-family-primary;
+  padding: $sidhe-spacing-3 $sidhe-spacing-6;
+  border-radius: $sidhe-radius-base8;
+}
+## Android Implementation
+
+Add the XML resource files to your project:
+
+sidhe_colors.xml
+sidhe_dimens.xml
+sidhe_typography.xml
+sidhe_styles.xml
+
+
+Use the resources in your layouts:
+
+xml<Button
+    style="@style/Sidhe.Button.Primary"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Primary Button" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/Sidhe.TextAppearance.Heading2"
+    android:text="Heading Text" />
+
+Or reference in code:
+
+kotlin// In Kotlin
+textView.setTextColor(ContextCompat.getColor(context, R.color.sidhe_color_primary_500))
+view.setPadding(
+    resources.getDimensionPixelSize(R.dimen.sidhe_spacing_4),
+    resources.getDimensionPixelSize(R.dimen.sidhe_spacing_4),
+    resources.getDimensionPixelSize(R.dimen.sidhe_spacing_4),
+    resources.getDimensionPixelSize(R.dimen.sidhe_spacing_4)
+)
+## iOS Implementation
+
+Add the Swift files to your project:
+
+SIDHEColors.swift
+SIDHETypography.swift
+SIDHESpacing.swift
+SIDHEComponents.swift
+
+
+## Use in UIKit:
+
+swift// UIKit
+let button = UIButton()
+button.applySIDHEPrimaryStyle()
+
+let titleLabel = UILabel()
+titleLabel.applySIDHEHeading2Style()
+titleLabel.text = "SIDHE Design System"
+
+## Use in SwiftUI:
+
+swift// SwiftUI
+Text("SIDHE Design System")
+    .sidheHeading2()
     
-    <form>
-      <div class="layout-stack-sm">
-        <label class="input-label">Full Name</label>
-        <input type="text" class="input" placeholder="Enter your name">
-      </div>
-      
-      <div class="layout-stack-sm" style="margin-top: var(--sidhe-spacing-4);">
-        <button class="button button-primary">Submit</button>
-        <button class="button button-ghost">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
-*/
+Button("Get Started") {
+    // Action
+}
+.buttonStyle(SIDHEPrimaryButtonStyle())
+Building from Source
+If you want to customize the tokens:
+
+## Clone the repository
+
+git clone https://github.com/sidhe/design-system.git
+cd sidhe-design-system
+
+## Install dependencies
+
+npm install
+
+## Modify token files in the tokens/ directory Build for all platforms
+
+npm run build:all
+
+## Or build for specific platforms
+
+npm run build:web
+npm run build:android
+npm run build:ios
+
+The generated files will be in the dist/ directory.
+
+## Implementation Examples
+
+## Web (CSS variable)
+
 
 ## IOS (Swift) 
 
-/**
- * SIDHE Design System - iOS Implementation
- * 
- * This file demonstrates how to implement the SIDHE design tokens in an iOS project using Swift.
- */
 
-import UIKit
-import SwiftUI
-
-// MARK: - Design Tokens
-
-// SIDHE Design System color tokens
-struct SIDHEColors {
-    // Primary Colors
-    struct Primary {
-        static let color100 = UIColor(red: 246/255, green: 134/255, blue: 194/255, alpha: 1) // #F686C2
-        static let color200 = UIColor(red: 244/255, green: 91/255, blue: 182/255, alpha: 1)  // #F45BB6
-        static let color300 = UIColor(red: 242/255, green: 51/255, blue: 171/255, alpha: 1)  // #F233AB
-        static let color400 = UIColor(red: 239/255, green: 10/255, blue: 159/255, alpha: 1)  // #EF0A9F
-        static let color500 = UIColor(red: 236/255, green: 0/255, blue: 148/255, alpha: 1)   // #EC0094
-        static let color10 = UIColor(red: 236/255, green: 0/255, blue: 148/255, alpha: 0.1)  // rgba(236, 0, 148, 0.1)
-    }
-    
-    // Secondary Colors
-    struct Secondary {
-        static let color100 = UIColor(red: 168/255, green: 136/255, blue: 229/255, alpha: 1) // #A888E5
-        static let color200 = UIColor(red: 140/255, green: 89/255, blue: 221/255, alpha: 1)  // #8C59DD
-        static let color300 = UIColor(red: 112/255, green: 43/255, blue: 213/255, alpha: 1)  // #702BD5
-        static let color400 = UIColor(red: 85/255, green: 0/255, blue: 204/255, alpha: 1)    // #5500CC
-        static let color500 = UIColor(red: 58/255, green: 0/255, blue: 153/255, alpha: 1)    // #3A0099
-        static let color10 = UIColor(red: 58/255, green: 0/255, blue: 153/255, alpha: 0.1)   // rgba(58, 0, 153, 0.1)
-    }
-    
-    // Neutral Colors
-    struct Neutral {
-        static let color100 = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1) // #F5F5F5
-        static let color200 = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1) // #E0E0E0
-        static let color300 = UIColor(red: 189/255, green: 189/255, blue: 189/255, alpha: 1) // #BDBDBD
-        static let color400 = UIColor(red: 158/255, green: 158/255, blue: 158/255, alpha: 1) // #9E9E9E
-        static let color500 = UIColor(red: 117/255, green: 117/255, blue: 117/255, alpha: 1) // #757575
-        static let color600 = UIColor(red: 97/255, green: 97/255, blue: 97/255, alpha: 1)    // #616161
-        static let color700 = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 1)    // #424242
-        static let color800 = UIColor(red: 48/255, green: 48/255, blue: 48/255, alpha: 1)    // #303030
-        static let color900 = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 1)    // #212121
-        static let color1000 = UIColor(red: 18/255, green: 18/255, blue: 18/255, alpha: 1)   // #121212
-        static let color10 = UIColor(red: 33/255, green: 33/255, blue: 33/255, alpha: 0.1)   // rgba(33, 33, 33, 0.1)
-    }
-    
-    // Feedback Colors
-    struct Red {
-        static let color100 = UIColor(red: 255/255, green: 90/255, blue: 90/255, alpha: 1)   // #FF5A5A
-        static let color200 = UIColor(red: 221/255, green: 14/255, blue: 16/255, alpha: 1)   // #DD0E10
-        static let color10 = UIColor(red: 221/255, green: 14/255, blue: 16/255, alpha: 0.1)  // rgba(221, 14, 16, 0.1)
-    }
-    
-    struct Yellow {
-        static let color100 = UIColor(red: 255/255, green: 222/255, blue: 89/255, alpha: 1)  // #FFDE59
-        static let color200 = UIColor(red: 201/255, green: 171/255, blue: 25/255, alpha: 1)  // #C9AB19
-        static let color10 = UIColor(red: 201/255, green: 171/255, blue: 25/255, alpha: 0.1) // rgba(201, 171, 25, 0.1)
-    }
-    
-    struct Green {
-        static let color100 = UIColor(red: 86/255, green: 224/255, blue: 178/255, alpha: 1)  // #56E0B2
-        static let color200 = UIColor(red: 23/255, green: 175/255, blue: 102/255, alpha: 1)  // #17AF66
-        static let color10 = UIColor(red: 23/255, green: 175/255, blue: 102/255, alpha: 0.1) // rgba(23, 175, 102, 0.1)
-    }
-}
-
-/// SIDHE Design System typography tokens
-struct SIDHETypography {
-    // Font Families
-    struct FontFamily {
-        static let primary = "PlusJakartaSans-Regular" // Use appropriate font names registered in the app
-        static let primaryMedium = "PlusJakartaSans-Medium"
-        static let primarySemiBold = "PlusJakartaSans-SemiBold"
-        static let primaryBold = "PlusJakartaSans-Bold"
-        
-        static let secondary = "Lora-Regular"
-        static let secondaryMedium = "Lora-Medium"
-        static let secondarySemiBold = "Lora-SemiBold"
-        static let secondaryBold = "Lora-Bold"
-    }
-    
-    // Font Weights
-    struct FontWeight {
-        static let regular = UIFont.Weight.regular
-        static let medium = UIFont.Weight.medium
-        static let semiBold = UIFont.Weight.semibold
-        static let bold = UIFont.Weight.bold
-    }
-    
-    // Font Sizes
-    struct FontSize {
-        static let xs: CGFloat = 12
-        static let sm: CGFloat = 14
-        static let md: CGFloat = 16
-        static let lg: CGFloat = 18
-        static let xl: CGFloat = 20
-        static let xxl: CGFloat = 24
-        static let xxxl: CGFloat = 30
-        static let xxxxl: CGFloat = 36
-        static let xxxxxl: CGFloat = 48
-        static let xxxxxxl: CGFloat = 60
-    }
-    
-    // Line Heights
-    struct LineHeight {
-        static let none: CGFloat = 1.0
-        static let tight: CGFloat = 1.25
-        static let snug: CGFloat = 1.375
-        static let normal: CGFloat = 1.5
-        static let relaxed: CGFloat = 1.625
-        static let loose: CGFloat = 2.0
-    }
-}
-
-/// SIDHE Design System spacing tokens
-struct SIDHESpacing {
-    static let spacing0: CGFloat = 0
-    static let spacing1: CGFloat = 4
-    static let spacing2: CGFloat = 8
-    static let spacing3: CGFloat = 12
-    static let spacing4: CGFloat = 16
-    static let spacing5: CGFloat = 20
-    static let spacing6: CGFloat = 24
-    static let spacing8: CGFloat = 32
-    static let spacing10: CGFloat = 40
-}
-
-/// SIDHE Design System radius tokens
-struct SIDHERadius {
-    static let base0: CGFloat = 0
-    static let base2: CGFloat = 2
-    static let base4: CGFloat = 4
-    static let base8: CGFloat = 8
-    static let base12: CGFloat = 12
-    static let baseRound: CGFloat = 999
-}
-
-/// SIDHE Design System effect tokens
-struct SIDHEEffects {
-    struct Shadow {
-        static let elevation1: [String: Any] = [
-            "color": UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
-            "offset": CGSize(width: 0, height: 1),
-            "radius": 3,
-            "opacity": 0.1
-        ]
-        
-        static let elevation2: [String: Any] = [
-            "color": UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
-            "offset": CGSize(width: 0, height: 3),
-            "radius": 6,
-            "opacity": 0.1
-        ]
-        
-        static let elevation3: [String: Any] = [
-            "color": UIColor(red: 0, green: 0, blue: 0, alpha: 0.1),
-            "offset": CGSize(width: 0, height: 6),
-            "radius": 12,
-            "opacity": 0.1
-        ]
-    }
-}
-
-// MARK: - UIKit Component Extensions
-
-// Button Component Styles
-extension UIButton {
-    func applySIDHEPrimaryStyle() {
-        backgroundColor = SIDHEColors.Primary.color500
-        setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont(name: SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md)
-        layer.cornerRadius = SIDHERadius.base8
-        contentEdgeInsets = UIEdgeInsets(
-            top: SIDHESpacing.spacing3,
-            left: SIDHESpacing.spacing6,
-            bottom: SIDHESpacing.spacing3,
-            right: SIDHESpacing.spacing6
-        )
-        
-        // Add shadow
-        layer.shadowColor = SIDHEEffects.Shadow.elevation1["color"] as? CGColor
-        layer.shadowOffset = SIDHEEffects.Shadow.elevation1["offset"] as! CGSize
-        layer.shadowRadius = SIDHEEffects.Shadow.elevation1["radius"] as! CGFloat
-        layer.shadowOpacity = Float(SIDHEEffects.Shadow.elevation1["opacity"] as! CGFloat)
-    }
-    
-    func applySIDHESecondaryStyle() {
-        backgroundColor = SIDHEColors.Secondary.color500
-        setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont(name: SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md)
-        layer.cornerRadius = SIDHERadius.base8
-        contentEdgeInsets = UIEdgeInsets(
-            top: SIDHESpacing.spacing3,
-            left: SIDHESpacing.spacing6,
-            bottom: SIDHESpacing.spacing3,
-            right: SIDHESpacing.spacing6
-        )
-        
-        // Add shadow
-        layer.shadowColor = SIDHEEffects.Shadow.elevation1["color"] as? CGColor
-        layer.shadowOffset = SIDHEEffects.Shadow.elevation1["offset"] as! CGSize
-        layer.shadowRadius = SIDHEEffects.Shadow.elevation1["radius"] as! CGFloat
-        layer.shadowOpacity = Float(SIDHEEffects.Shadow.elevation1["opacity"] as! CGFloat)
-    }
-    
-    func applySIDHEGhostStyle() {
-        backgroundColor = .clear
-        setTitleColor(SIDHEColors.Neutral.color900, for: .normal)
-        titleLabel?.font = UIFont(name: SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md)
-        layer.cornerRadius = SIDHERadius.base8
-        contentEdgeInsets = UIEdgeInsets(
-            top: SIDHESpacing.spacing3,
-            left: SIDHESpacing.spacing6,
-            bottom: SIDHESpacing.spacing3,
-            right: SIDHESpacing.spacing6
-        )
-        layer.shadowOpacity = 0
-    }
-}
-
-// Text Style Extensions
-extension UILabel {
-    func applySIDHEHeading1Style() {
-        font = UIFont(name: SIDHETypography.FontFamily.secondaryBold, size: SIDHETypography.FontSize.xxxxxl)
-        textColor = SIDHEColors.Neutral.color900
-        numberOfLines = 0
-        adjustsFontSizeToFitWidth = false
-    }
-    
-    func applySIDHEHeading2Style() {
-        font = UIFont(name: SIDHETypography.FontFamily.secondaryBold, size: SIDHETypography.FontSize.xxxxl)
-        textColor = SIDHEColors.Neutral.color900
-        numberOfLines = 0
-    }
-    
-    func applySIDHEHeading3Style() {
-        font = UIFont(name: SIDHETypography.FontFamily.secondarySemiBold, size: SIDHETypography.FontSize.xxxl)
-        textColor = SIDHEColors.Neutral.color900
-        numberOfLines = 0
-    }
-    
-    func applySIDHEBodyStyle() {
-        font = UIFont(name: SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.md)
-        textColor = SIDHEColors.Neutral.color800
-        numberOfLines = 0
-    }
-    
-    func applySIDHEBodySmallStyle() {
-        font = UIFont(name: SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.sm)
-        textColor = SIDHEColors.Neutral.color800
-        numberOfLines = 0
-    }
-    
-    func applySIDHECaptionStyle() {
-        font = UIFont(name: SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.xs)
-        textColor = SIDHEColors.Neutral.color600
-        numberOfLines = 0
-    }
-}
-
-// Card View Extension
-extension UIView {
-    func applySIDHECardStyle() {
-        backgroundColor = .white
-        layer.cornerRadius = SIDHERadius.base8
-        
-        // Add shadow
-        layer.shadowColor = SIDHEEffects.Shadow.elevation2["color"] as? CGColor
-        layer.shadowOffset = SIDHEEffects.Shadow.elevation2["offset"] as! CGSize
-        layer.shadowRadius = SIDHEEffects.Shadow.elevation2["radius"] as! CGFloat
-        layer.shadowOpacity = Float(SIDHEEffects.Shadow.elevation2["opacity"] as! CGFloat)
-    }
-}
-
-// Text Field Extension
-extension UITextField {
-    func applySIDHEInputStyle() {
-        font = UIFont(name: SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.md)
-        textColor = SIDHEColors.Neutral.color900
-        
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: SIDHESpacing.spacing4, height: 0))
-        leftView = paddingView
-        leftViewMode = .always
-        
-        layer.borderWidth = 1
-        layer.borderColor = SIDHEColors.Neutral.color300.cgColor
-        layer.cornerRadius = SIDHERadius.base4
-        
-        backgroundColor = .white
-        
-        // Add shadow
-        layer.shadowColor = SIDHEEffects.Shadow.elevation1["color"] as? CGColor
-        layer.shadowOffset = SIDHEEffects.Shadow.elevation1["offset"] as! CGSize
-        layer.shadowRadius = SIDHEEffects.Shadow.elevation1["radius"] as! CGFloat
-        layer.shadowOpacity = Float(SIDHEEffects.Shadow.elevation1["opacity"] as! CGFloat)
-    }
-}
-
-// MARK: - SwiftUI Implementation
-
-extension Color {
-    // Primary Colors
-    static let sidheP100 = Color(SIDHEColors.Primary.color100)
-    static let sidheP200 = Color(SIDHEColors.Primary.color200)
-    static let sidheP300 = Color(SIDHEColors.Primary.color300)
-    static let sidheP400 = Color(SIDHEColors.Primary.color400)
-    static let sidheP500 = Color(SIDHEColors.Primary.color500)
-    
-    // Secondary Colors
-    static let sidheS100 = Color(SIDHEColors.Secondary.color100)
-    static let sidheS200 = Color(SIDHEColors.Secondary.color200)
-    static let sidheS300 = Color(SIDHEColors.Secondary.color300)
-    static let sidheS400 = Color(SIDHEColors.Secondary.color400)
-    static let sidheS500 = Color(SIDHEColors.Secondary.color500)
-    
-    // Neutral Colors
-    static let sidheN100 = Color(SIDHEColors.Neutral.color100)
-    static let sidheN200 = Color(SIDHEColors.Neutral.color200)
-    static let sidheN300 = Color(SIDHEColors.Neutral.color300)
-    static let sidheN400 = Color(SIDHEColors.Neutral.color400)
-    static let sidheN500 = Color(SIDHEColors.Neutral.color500)
-    static let sidheN600 = Color(SIDHEColors.Neutral.color600)
-    static let sidheN700 = Color(SIDHEColors.Neutral.color700)
-    static let sidheN800 = Color(SIDHEColors.Neutral.color800)
-    static let sidheN900 = Color(SIDHEColors.Neutral.color900)
-}
-
-// SwiftUI Text Styles
-struct SIDHETextStyles {
-    struct Heading1: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.secondaryBold, size: SIDHETypography.FontSize.xxxxxl))
-                .foregroundColor(Color(SIDHEColors.Neutral.color900))
-                .lineSpacing(SIDHETypography.FontSize.xxxxxl * (SIDHETypography.LineHeight.tight - 1))
-        }
-    }
-    
-    struct Heading2: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.secondaryBold, size: SIDHETypography.FontSize.xxxxl))
-                .foregroundColor(Color(SIDHEColors.Neutral.color900))
-                .lineSpacing(SIDHETypography.FontSize.xxxxl * (SIDHETypography.LineHeight.tight - 1))
-        }
-    }
-    
-    struct Heading3: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.secondarySemiBold, size: SIDHETypography.FontSize.xxxl))
-                .foregroundColor(Color(SIDHEColors.Neutral.color900))
-                .lineSpacing(SIDHETypography.FontSize.xxxl * (SIDHETypography.LineHeight.tight - 1))
-        }
-    }
-    
-    struct BodyText: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.md))
-                .foregroundColor(Color(SIDHEColors.Neutral.color800))
-                .lineSpacing(SIDHETypography.FontSize.md * (SIDHETypography.LineHeight.normal - 1))
-        }
-    }
-    
-    struct BodySmall: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.sm))
-                .foregroundColor(Color(SIDHEColors.Neutral.color800))
-                .lineSpacing(SIDHETypography.FontSize.sm * (SIDHETypography.LineHeight.normal - 1))
-        }
-    }
-    
-    struct Caption: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .font(.custom(SIDHETypography.FontFamily.primary, size: SIDHETypography.FontSize.xs))
-                .foregroundColor(Color(SIDHEColors.Neutral.color600))
-                .lineSpacing(SIDHETypography.FontSize.xs * (SIDHETypography.LineHeight.normal - 1))
-        }
-    }
-}
-
-extension View {
-    func sidheHeading1() -> some View {
-        modifier(SIDHETextStyles.Heading1())
-    }
-    
-    func sidheHeading2() -> some View {
-        modifier(SIDHETextStyles.Heading2())
-    }
-    
-    func sidheHeading3() -> some View {
-        modifier(SIDHETextStyles.Heading3())
-    }
-    
-    func sidheBodyText() -> some View {
-        modifier(SIDHETextStyles.BodyText())
-    }
-    
-    func sidheBodySmall() -> some View {
-        modifier(SIDHETextStyles.BodySmall())
-    }
-    
-    func sidheCaption() -> some View {
-        modifier(SIDHETextStyles.Caption())
-    }
-}
-
-// SwiftUI Button Styles
-struct SIDHEPrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, SIDHESpacing.spacing3)
-            .padding(.horizontal, SIDHESpacing.spacing6)
-            .background(
-                configuration.isPressed ? Color(SIDHEColors.Primary.color400) : Color(SIDHEColors.Primary.color500)
-            )
-            .foregroundColor(.white)
-            .cornerRadius(SIDHERadius.base8)
-            .font(.custom(SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md))
-            .shadow(
-                color: Color(SIDHEColors.Neutral.color900).opacity(0.1),
-                radius: 3,
-                x: 0,
-                y: 1
-            )
-    }
-}
-
-struct SIDHESecondaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, SIDHESpacing.spacing3)
-            .padding(.horizontal, SIDHESpacing.spacing6)
-            .background(
-                configuration.isPressed ? Color(SIDHEColors.Secondary.color400) : Color(SIDHEColors.Secondary.color500)
-            )
-            .foregroundColor(.white)
-            .cornerRadius(SIDHERadius.base8)
-            .font(.custom(SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md))
-            .shadow(
-                color: Color(SIDHEColors.Neutral.color900).opacity(0.1),
-                radius: 3,
-                x: 0,
-                y: 1
-            )
-    }
-}
-
-struct SIDHEGhostButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, SIDHESpacing.spacing3)
-            .padding(.horizontal, SIDHESpacing.spacing6)
-            .background(
-                configuration.isPressed ? Color(SIDHEColors.Neutral.color100) : Color.clear
-            )
-            .foregroundColor(Color(SIDHEColors.Neutral.color900))
-            .cornerRadius(SIDHERadius.base8)
-            .font(.custom(SIDHETypography.FontFamily.primaryMedium, size: SIDHETypography.FontSize.md))
-    }
-}
-
-// SwiftUI Card View
-struct SIDHECard<Content: View>: View {
-    let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
-    
-    var body: some View {
-        content
-            .padding(SIDHESpacing.spacing6)
-            .background(Color.white)
-            .cornerRadius(SIDHERadius.base8)
-            .shadow(
-                color: Color(SIDHEColors.Neutral.color900).opacity(0.1),
-                radius: 6,
-                x: 0,
-                y: 3
-            )
-    }
-}
-
-// Example Usage with SwiftUI:
-/*
-struct ContentView: View {
-    @State private var name = ""
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: SIDHESpacing.spacing6) {
-            Text("SIDHE Design System")
-                .sidheHeading1()
-            
-            SIDHECard {
-                VStack(alignment: .leading, spacing: SIDHESpacing.spacing4) {
-                    Text("Welcome")
-                        .sidheHeading2()
-                    
-                    Text("Design system implementation")
-                        .sidheBodySmall()
-                    
-                    Text("This is an example of the SIDHE design system implementation.")
-                        .sidheBodyText()
-                        .padding(.top, SIDHESpacing.spacing2)
-                }
-            }
-            
-            VStack(alignment: .leading, spacing: SIDHESpacing.spacing4) {
-                Text("Your Information")
-                    .sidheHeading3()
-                
-                VStack(alignment: .leading, spacing: SIDHESpacing.spacing2) {
-                    Text("Full Name")
-                        .sidheCaption()
-                    
-                    TextField("Enter your name", text: $name)
-                        .padding(.vertical, SIDHESpacing.spacing3)
-                        .padding(.horizontal, SIDHESpacing.spacing4)
-                        .background(Color.white)
-                        .cornerRadius(SIDHERadius.base4)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: SIDHERadius.base4)
-                                .stroke(Color(SIDHEColors.Neutral.color300), lineWidth: 1)
-                        )
-                }
-                
-                HStack(spacing: SIDHESpacing.spacing4) {
-                    Button("Submit") {
-                        // Action
-                    }
-                    .buttonStyle(SIDHEPrimaryButtonStyle())
-                    
-                    Button("Cancel") {
-                        // Action
-                    }
-                    .buttonStyle(SIDHEGhostButtonStyle())
-                }
-                .padding(.top, SIDHESpacing.spacing4)
-            }
-            
-            Spacer()
-        }
-        .padding(SIDHESpacing.spacing6)
-    }
-}
-*/
 
 ## Android (XML) 
 <!-- 
